@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.jinu.spring.test.mybatis.repository.RealEstateRepository">
+	<select id="selectRealEstate" parameterType="int"
+	resultType="com.jinu.spring.test.mybatis.domain.RealEstate">
+	
+		SELECT
+			`id`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`rentPrice`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`real_estate`
+		WHERE
+			`id` = #{id}
+	</select>
+	
+	<select id="selectRealEstateListByRentPrice" parameterType="int"
+	resultType="com.jinu.spring.test.mybatis.domain.RealEstate">
+		
+		SELECT
+			`id`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`rentPrice`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`real_estate`
+		WHERE 
+			<![CDATA[`rentPrice` < #{rentPrice}	]]>
+	</select>
+	
+	<select id="selectRealEstateListByAreaAndPrice" parameterType="map"
+	resultType="com.jinu.spring.test.mybatis.domain.RealEstate">
+	
+	SELECT
+			`id`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`rentPrice`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`real_estate`
+		WHERE 
+			<![CDATA[
+			`area` >= #{area}
+			AND `price` <= #{price}
+			AND `type` = '매매'
+			]]>
+		
+	</select>
+	
+	<insert id="insertRealEstateByObject" parameterType="com.jinu.spring.test.mybatis.domain.RealEstate">
+		Insert
+			`real_estate`
+		(
+			`realtorId`
+			, `address`
+			, `area`
+			, `type`
+			, `price`
+		)
+		Value
+		(
+			#{realtorId}
+			, #{address}
+			, #{area}
+			, #{type}
+			, #{price}
+		)
+	</insert>
+	
+	<insert id="insertRealEstate" parameterType="map">
+		Insert
+			`real_estate`
+		(
+			`realtorId`
+			, `address`
+			, `area`
+			, `type`
+			, `price`
+			, `rentPrice`
+		)
+		Value
+		(
+			#{realtorId}
+			, #{address}
+			, #{area}
+			, #{type}
+			, #{price}
+			, #{rentPrice}
+		)
+	
+	</insert>
+	
+	<update id="updateRealEstate" parameterType="map">
+		UPDATE 
+			`real_estate`
+		SET
+			`type` = #{type}
+			, `price` = #{price}
+			, `updatedAt` = now()
+		WHERE
+			`id` = #{id}
+			
+	</update>
+	
+	<delete id="deleteRealEstate" parameterType="int">
+		DELETE FROM		
+			`real_estate`
+		WHERE
+			`id` = #{id}
+	</delete>
+	
+	
+	
+	
+</mapper>
