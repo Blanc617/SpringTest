@@ -5,12 +5,12 @@ import java.time.LocalDateTime;
 public class Seller {
 	
 	private int id;
-	private String nickname;
+	private String nickName;
 	private double temperature;
 	private String profileImage;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
-	
+	 
 	
 	public int getId() {
 		return id;
@@ -18,11 +18,11 @@ public class Seller {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getNickname() {
-		return nickname;
+	public String getNickName() {
+		return nickName;
 	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setNickname(String nickName) {
+		this.nickName = nickName;
 	}
 	public double getTemperature() {
 		return temperature;
