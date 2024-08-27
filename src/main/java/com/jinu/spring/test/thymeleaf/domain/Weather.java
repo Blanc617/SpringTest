@@ -1,10 +1,10 @@
 package com.jinu.spring.test.thymeleaf.domain;
 
 import java.time.LocalDate;
+
 import java.time.LocalDateTime;
 
 public class Weather {
-
 	private int id;
 	private String weather;
 	private LocalDate date;
@@ -70,6 +70,8 @@ public class Weather {
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	
+	
 	
 	
 }
