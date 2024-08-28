@@ -63,68 +63,6 @@
 		
 	</select>
 	
-	<insert id="insertRealEstateByObject" parameterType="com.jinu.spring.test.mybatis.domain.RealEstate">
-		Insert
-			`real_estate`
-		(
-			`realtorId`
-			, `address`
-			, `area`
-			, `type`
-			, `price`
-		)
-		Value
-		(
-			#{realtorId}
-			, #{address}
-			, #{area}
-			, #{type}
-			, #{price}
-		)
-	</insert>
-	
-	<insert id="insertRealEstate" parameterType="map">
-		Insert
-			`real_estate`
-		(
-			`realtorId`
-			, `address`
-			, `area`
-			, `type`
-			, `price`
-			, `rentPrice`
-		)
-		Value
-		(
-			#{realtorId}
-			, #{address}
-			, #{area}
-			, #{type}
-			, #{price}
-			, #{rentPrice}
-		)
-	
-	</insert>
-	
-	<update id="updateRealEstate" parameterType="map">
-		UPDATE 
-			`real_estate`
-		SET
-			`type` = #{type}
-			, `price` = #{price}
-			, `updatedAt` = now()
-		WHERE
-			`id` = #{id}
-			
-	</update>
-	
-	<delete id="deleteRealEstate" parameterType="int">
-		DELETE FROM		
-			`real_estate`
-		WHERE
-			`id` = #{id}
-	</delete>
-	
 	
 	
 	
