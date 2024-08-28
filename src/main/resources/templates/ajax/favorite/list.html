@@ -38,5 +38,34 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 
 
+	<script>
+	$(document).ready(function() {
+		
+		$(".delete-btn").on("click", function() {
+			
+			let id = $(this).data("favorite-id");
+
+			$.ajax({
+				type:"get"
+				, url:"/ajax/favorite/delete"
+				, data:{"id": id}
+				, success:function(data) {
+					// {"result":"success"}
+					// {"result":"fail"}
+					if(data.result == "success") {
+						location.reload();
+					} else {
+						alert("삭제 실패!!");
+					}
+				} 
+				, error:function() {
+					alert("삭제 에러!!");
+				}
+			});
+		});
+		
+	});
+
+</script>
 </body>
 </html>
